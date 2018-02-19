@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?><!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~                                                                                               ~
+  ~                         Created by Dwi Ariyanto (creatures99@gmail.com)                       ~
+  ~                             Copyright © 2018. All rights reserved.                            ~
+  ~                                                                                               ~
+  ~                                                                                               ~
+  ~ Create On:                                                                                    ~
+  ~ Sunday, February 18, 2018 at 23:25                                                            ~
+  ~                                                                                               ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="150dp"
+	android:layout_height="150dp"
+	android:background="@drawable/ic_launcher_background"
+	android:elevation="2dp"
+	android:gravity="center"
+	android:text="1"
+	android:textColor="@android:color/white"
+	android:textSize="60sp"
+	android:textStyle="bold"
+	/>

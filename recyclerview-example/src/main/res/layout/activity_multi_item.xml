@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?><!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~                                                                                               ~
+  ~                         Created by Dwi Ariyanto (creatures99@gmail.com)                       ~
+  ~                             Copyright © 2018. All rights reserved.                            ~
+  ~                                                                                               ~
+  ~                                                                                               ~
+  ~ Create On:                                                                                    ~
+  ~ Sunday, February 18, 2018 at 22:43                                                            ~
+  ~                                                                                               ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context="com.dwiariyanto.recyclerview.example.feature.multiitem.MultiItemActivity"
+	></android.support.constraint.ConstraintLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?><!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~                                                                                               ~
+  ~                         Created by Dwi Ariyanto (creatures99@gmail.com)                       ~
+  ~                             Copyright © 2018. All rights reserved.                            ~
+  ~                                                                                               ~
+  ~                                                                                               ~
+  ~ Create On:                                                                                    ~
+  ~ Sunday, February 18, 2018 at 21:25                                                            ~
+  ~                                                                                               ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/recyclerView"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	/>

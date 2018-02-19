@@ -1,0 +1,13 @@
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~                                                                                               ~
+  ~                         Created by Dwi Ariyanto (creatures99@gmail.com)                       ~
+  ~                             Copyright © 2018. All rights reserved.                            ~
+  ~                                                                                               ~
+  ~                                                                                               ~
+  ~ Last modified:                                                                                ~
+  ~ Tuesday, January 30, 2018 at 00:14                                                            ~
+  ~                                                                                               ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dwiariyanto.recyclerview" />

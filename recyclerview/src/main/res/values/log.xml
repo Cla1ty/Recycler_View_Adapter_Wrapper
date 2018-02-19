@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~                                                                                               ~
+  ~                         Created by Dwi Ariyanto (creatures99@gmail.com)                       ~
+  ~                             Copyright © 2018. All rights reserved.                            ~
+  ~                                                                                               ~
+  ~                                                                                               ~
+  ~ Last modified:                                                                                ~
+  ~ Wednesday, February 07, 2018 at 22:58                                                         ~
+  ~                                                                                               ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+<!--
+
+2.1.1
+~ fix bug LinearSpanContentDecoration Horizontal
+~ fix bug ItemDecoration
+- IRecyclerViewData
+
+2.1.0
+- rework code (for best practice on kotlin)
+
+2.0.0
+- change language from java to kotlin
+
+-->
+
+<resources></resources>
