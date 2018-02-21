@@ -12,12 +12,14 @@
 package com.dwiariyanto.recyclerview.example.feature.multiitem
 
 data class MultiItemVerticalModel(
+		val type: String,
 		val dataList: List<Any>
 ) {
 	
 	companion object {
 		val data = listOf(
 				MultiItemVerticalModel(
+						"1",
 						listOf(
 								MultiItemHorizontalModel("1"),
 								MultiItemHorizontalModel("2"),
@@ -26,26 +28,29 @@ data class MultiItemVerticalModel(
 						)
 				),
 				MultiItemVerticalModel(
+						"2",
 						listOf(
-								MultiItemHorizontalModel("1"),
-								MultiItemHorizontalModel("2"),
-								MultiItemHorizontalModel("3"),
+								MultiItemHorizontalModel("4"),
+								MultiItemHorizontalModel("5"),
+								MultiItemHorizontalModel("6"),
 								MultiItemHorizontalMoreModel()
 						)
 				),
 				MultiItemVerticalModel(
+						"3",
 						listOf(
-								MultiItemHorizontalModel("1"),
-								MultiItemHorizontalModel("2"),
-								MultiItemHorizontalModel("3"),
+								MultiItemHorizontalModel("7"),
+								MultiItemHorizontalModel("8"),
+								MultiItemHorizontalModel("9"),
 								MultiItemHorizontalMoreModel()
 						)
 				),
 				MultiItemVerticalModel(
+						"4",
 						listOf(
-								MultiItemHorizontalModel("1"),
-								MultiItemHorizontalModel("2"),
-								MultiItemHorizontalModel("3"),
+								MultiItemHorizontalModel("10"),
+								MultiItemHorizontalModel("11"),
+								MultiItemHorizontalModel("12"),
 								MultiItemHorizontalMoreModel()
 						)
 				)

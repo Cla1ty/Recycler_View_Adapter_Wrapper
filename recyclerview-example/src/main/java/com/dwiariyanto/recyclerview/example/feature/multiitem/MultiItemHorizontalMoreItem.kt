@@ -32,9 +32,9 @@ class MultiItemHorizontalMoreItem
 			data: MultiItemHorizontalMoreModel
 	) {
 		(holder.itemView as TextView).apply {
-			text = "More"
+			text = "More ${data.type}"
 			setOnClickListener {
-				presenter.clickMore()
+				presenter.clickItem(text.toString())
 			}
 		}
 	}

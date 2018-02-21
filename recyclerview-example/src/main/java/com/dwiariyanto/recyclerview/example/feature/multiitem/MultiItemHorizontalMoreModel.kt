@@ -11,4 +11,6 @@
 
 package com.dwiariyanto.recyclerview.example.feature.multiitem
 
-class MultiItemHorizontalMoreModel
+class MultiItemHorizontalMoreModel(
+		var type: String = ""
+)

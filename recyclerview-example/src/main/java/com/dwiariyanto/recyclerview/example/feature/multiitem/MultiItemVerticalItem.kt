@@ -37,6 +37,9 @@ class MultiItemVerticalItem
 				horizontalMoreItem
 		)
 		
+		data.dataList.filter { it is MultiItemHorizontalMoreModel }
+				.forEach { (it as MultiItemHorizontalMoreModel).type = data.type }
+		
 		adapter.recyclerView = holder.itemView.recyclerView
 		adapter.data = data.dataList
 	}
