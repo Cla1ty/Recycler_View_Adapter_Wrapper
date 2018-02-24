@@ -23,6 +23,7 @@ abstract class BaseRecyclerViewAdapter(
 	
 	private val itemLayouts = ArrayList<BaseItemView<*>>()
 	
+	private var oldDataName = mutableListOf<String>()
 	var data: List<Any>? = null
 		set(value) {
 			val result = DiffUtil.calculateDiff(object : DiffUtil.Callback() {
@@ -45,22 +46,22 @@ abstract class BaseRecyclerViewAdapter(
 						field != null && value != null && field!![oldItemPosition] == value[newItemPosition]
 			})
 			
+			if (field != null) {
+				oldDataName.clear()
+				field!!.forEach { oldDataName.add(it::class.java.name) }
+			}
+			
 			field = value
 			result.dispatchUpdatesTo(this)
-			
-			if (recyclerView != null && recyclerView!!.itemDecorationCount > 0) {
-				recyclerView!!.postDelayed(
-						{ recyclerView!!.invalidateItemDecorations() },
-						150
-				)
-			}
 		}
 	
-	var recyclerView: RecyclerView? = null
+	@Deprecated(
+			"Use recyclerView.adapter = adapter",
+			ReplaceWith("recyclerView.adapter = adapter")
+	) var recyclerView: RecyclerView? = null
 		set(value) {
 			field = value
 			field?.apply {
-				build(this)
 				adapter = this@BaseRecyclerViewAdapter
 			}
 		}
@@ -70,6 +71,10 @@ abstract class BaseRecyclerViewAdapter(
 	}
 	
 	abstract fun build(recyclerView: RecyclerView)
+	
+	override fun onAttachedToRecyclerView(recyclerView: RecyclerView?) {
+		build(recyclerView!!)
+	}
 	
 	override fun onCreateViewHolder(
 			parent: ViewGroup?,
@@ -91,12 +96,17 @@ abstract class BaseRecyclerViewAdapter(
 			holder: RecyclerViewHolder?,
 			position: Int
 	) {
-		val viewType = getItemViewType(position)
+		val viewType = holder!!.itemViewType
 		val itemLayout = itemLayouts[viewType]
 		itemLayout.bind?.invoke(
-				holder!!,
+				holder,
 				data!![position]
 		)
+	}
+	
+	override fun onViewRecycled(holder: RecyclerViewHolder) {
+		val itemLayout = itemLayouts[holder.itemViewType]
+		itemLayout.onRecycler(holder)
 	}
 	
 	override fun getItemCount(): Int = data?.size
@@ -105,7 +115,7 @@ abstract class BaseRecyclerViewAdapter(
 	override fun getItemViewType(position: Int): Int {
 		val name = data!![position]::class.java.name
 		return (0 until itemLayouts.size).firstOrNull { itemLayouts[it].id == name }
-		       ?: throw IllegalArgumentException("Item Layout \"$name\" Not Found")
+		       ?: throw IllegalArgumentException("Item View \"$name\" Not Found")
 	}
 	
 }

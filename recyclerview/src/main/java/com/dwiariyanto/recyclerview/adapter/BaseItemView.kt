@@ -28,9 +28,12 @@ abstract class BaseItemView<in DATA : Any>(
 		}
 	}
 	
-	abstract fun onCreate(holder: RecyclerViewHolder)
+	open fun onCreate(holder: RecyclerViewHolder) {}
+	
 	abstract fun onBind(
 			holder: RecyclerViewHolder,
 			data: DATA
 	)
+	
+	open fun onRecycler(holder: RecyclerViewHolder) {}
 }

@@ -28,7 +28,13 @@ import android.view.View
  * |____| <span> |____|
 </span></span></span></span> */
 
-class GridSpanContentDecoration(
+@Deprecated(
+		"Use ItemDecoration",
+		ReplaceWith(
+				"ItemDecoration",
+				"om.dwiariyanto.recyclerview.decoration"
+		)
+) class GridSpanContentDecoration(
 		private val spanSize: Float = 0f,
 		private val edge: Boolean = true
 ) : RecyclerView.ItemDecoration() {

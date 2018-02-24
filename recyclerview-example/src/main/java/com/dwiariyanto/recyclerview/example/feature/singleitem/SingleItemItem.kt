@@ -12,6 +12,7 @@
 package com.dwiariyanto.recyclerview.example.feature.singleitem
 
 import android.widget.TextView
+import com.dwiariyanto.log.info
 import com.dwiariyanto.recyclerview.adapter.BaseItemView
 import com.dwiariyanto.recyclerview.adapter.RecyclerViewHolder
 import com.dwiariyanto.recyclerview.example.R
@@ -31,9 +32,15 @@ class SingleItemItem
 			holder: RecyclerViewHolder,
 			data: SingleItemModel
 	) {
+		info("TAG" + holder.tag.toString())
+		holder.tag = holder.layoutPosition
 		(holder.itemView as TextView).apply {
 			text = data.number
 			setOnClickListener { presenter.itemClick(data.number) }
 		}
+	}
+	
+	override fun onRecycler(holder: RecyclerViewHolder) {
+		info("TAG" + holder.tag.toString())
 	}
 }

@@ -11,13 +11,13 @@
 
 package com.dwiariyanto.recyclerview.example.utils
 
-import android.content.Context
 import android.content.Intent
+import com.dwiariyanto.recyclerview.example.feature.home.HomeActivity
 import javax.inject.Inject
 
 class Navigator
 @Inject constructor(
-		private val context: Context
+		private val context: HomeActivity
 ) {
 	
 	fun goto(

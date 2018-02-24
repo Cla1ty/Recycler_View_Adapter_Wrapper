@@ -11,6 +11,7 @@
 
 package com.dwiariyanto.recyclerview.example
 
+import com.dwiariyanto.log.Logger
 import com.dwiariyanto.recyclerview.example.di.DaggerMainComponent
 import com.dwiariyanto.recyclerview.example.utils.MathHelper
 import dagger.android.AndroidInjector
@@ -24,6 +25,10 @@ class MainApplication : DaggerApplication() {
 	
 	override fun onCreate() {
 		super.onCreate()
+		if(BuildConfig.DEBUG){
+			Logger.install(this)
+		}
+		
 		MathHelper.install(this)
 	}
 }

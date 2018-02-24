@@ -30,7 +30,7 @@ class MultiItemActivity : AppCompatActivity(),
 		AndroidInjection.inject(this)
 		setContentView(R.layout.recyclerview)
 		
-		adapter.recyclerView = recyclerView
+		recyclerView.adapter = adapter
 		presenter.loadData()
 	}
 	

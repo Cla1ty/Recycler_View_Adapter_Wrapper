@@ -15,7 +15,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.widget.LinearLayout
 import com.dwiariyanto.recyclerview.adapter.BaseRecyclerViewAdapter
-import com.dwiariyanto.recyclerview.decoration.LinearSpanContentDecoration
+import com.dwiariyanto.recyclerview.decoration.ItemDecoration
 import com.dwiariyanto.recyclerview.example.utils.dp
 import javax.inject.Inject
 
@@ -30,7 +30,7 @@ class MultiItemHorizontalAdapter
 	
 	override fun build(recyclerView: RecyclerView) {
 		recyclerView.apply {
-			addItemDecoration(LinearSpanContentDecoration(4f.dp))
+			addItemDecoration(ItemDecoration(8.dp))
 			layoutManager = LinearLayoutManager(
 					context,
 					LinearLayout.HORIZONTAL,

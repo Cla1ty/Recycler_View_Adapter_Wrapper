@@ -39,3 +39,23 @@ class MultiItemHorizontalAdapter
 		horizontalMoreItem
 )
 ```
+
+## Change Log
+```
+2.1.2
+~ RCA: Fix Bug ItemDecoration + DiffUtils
++ ItemDecoration (Replacement for GridSpanContentDecoration & LinearSpanContentDecoration)
+~ Build RecyclerView on Attach Event
++ OnRecycler
+
+2.1.1
+~ fix bug LinearSpanContentDecoration Horizontal
+~ fix bug ItemDecoration + DiffUtils
+- IRecyclerViewData
+
+2.1.0
+- re-code (for best practice on kotlin)
+
+2.0.0
+- change language from java to kotlin
+```

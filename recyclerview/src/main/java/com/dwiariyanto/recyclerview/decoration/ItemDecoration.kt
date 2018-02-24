@@ -5,34 +5,48 @@
  *                                                                                                *
  *                                                                                                *
  * Create On:                                                                                     *
- * Sunday, February 18, 2018 at 21:48                                                             *
+ * Saturday, February 24, 2018 at 22:55                                                           *
  *                                                                                                *
  **************************************************************************************************/
 
-package com.dwiariyanto.recyclerview.example.feature.singleitem
+package com.dwiariyanto.recyclerview.decoration
 
-import android.support.v7.widget.GridLayoutManager
+import android.graphics.Rect
 import android.support.v7.widget.RecyclerView
-import com.dwiariyanto.recyclerview.adapter.BaseRecyclerViewAdapter
-import com.dwiariyanto.recyclerview.decoration.ItemDecoration
-import com.dwiariyanto.recyclerview.example.utils.dp
-import javax.inject.Inject
+import android.view.View
 
-class SingleItemAdapter
-@Inject constructor(
-		singleItemItem: SingleItemItem
-) : BaseRecyclerViewAdapter(
-		singleItemItem
-) {
+class ItemDecoration(
+		private var spanSize: Int,
+		private val extraEdgeSize: Int = 0
+) : RecyclerView.ItemDecoration() {
 	
-	override fun build(recyclerView: RecyclerView) {
-		recyclerView.apply {
-			addItemDecoration(ItemDecoration(16.dp))
-			layoutManager = GridLayoutManager(
-					context,
-					2
-			)
+	private var config = true
+	
+	override fun getItemOffsets(
+			outRect: Rect,
+			view: View,
+			parent: RecyclerView,
+			state: RecyclerView.State?
+	) {
+		if (config) {
+			config = false
 			
+			spanSize /= 2
+			
+			parent.clipToPadding = false
+			
+			val padding = spanSize + extraEdgeSize
+			parent.setPadding(
+					padding,
+					padding,
+					padding,
+					padding
+			)
 		}
+		
+		outRect.left = spanSize
+		outRect.top = spanSize
+		outRect.right = spanSize
+		outRect.bottom = spanSize
 	}
 }

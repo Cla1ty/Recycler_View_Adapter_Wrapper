@@ -28,7 +28,13 @@ import android.view.View
  * </span>
  */
 
-class LinearSpanContentDecoration(
+@Deprecated(
+		"Use ItemDecoration",
+		ReplaceWith(
+				"ItemDecoration",
+				"om.dwiariyanto.recyclerview.decoration"
+		)
+) class LinearSpanContentDecoration(
 		private var spanSize: Float = 0f,
 		private val edge: Boolean = true
 ) : RecyclerView.ItemDecoration() {

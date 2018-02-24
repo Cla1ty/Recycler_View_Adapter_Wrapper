@@ -30,7 +30,7 @@ class SingleItemActivity : AppCompatActivity(),
 		AndroidInjection.inject(this)
 		setContentView(R.layout.recyclerview)
 		
-		adapter.recyclerView = recyclerView
+		recyclerView.adapter = adapter
 	}
 	
 	override fun onStart() {
