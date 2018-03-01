@@ -32,16 +32,19 @@ class MultiItemVerticalItem
 			holder: RecyclerViewHolder,
 			data: MultiItemVerticalModel
 	) {
-		val adapter = MultiItemHorizontalAdapter(
-				horizontalItem,
-				horizontalMoreItem
-		)
-		
 		data.dataList.filter { it is MultiItemHorizontalMoreModel }
 				.forEach { (it as MultiItemHorizontalMoreModel).type = data.type }
 		
-		holder.itemView.recyclerView.adapter = adapter
-		adapter.data = data.dataList
+		holder.itemView.recyclerView.apply {
+			if (adapter == null) {
+				adapter = MultiItemHorizontalAdapter(
+						horizontalItem,
+						horizontalMoreItem
+				)
+			}
+			
+			(adapter as MultiItemHorizontalAdapter).data = data.dataList
+		}
 	}
 }
 
