@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="com.dwiariyanto.recyclerview.example"
-	>
+	package="com.dwiariyanto.recyclerview.example">
 	
 	<application
 		android:name=".MainApplication"
@@ -19,6 +18,7 @@
 			</intent-filter>
 		</activity>
 		<activity android:name=".feature.singleitem.SingleItemActivity" />
-		<activity android:name=".feature.multiitem.MultiItemActivity"></activity>
+		<activity android:name=".feature.multiitem.MultiItemActivity" />
+		<activity android:name=".feature.loadmore.LoadMoreActivity" />
 	</application>
 </manifest>

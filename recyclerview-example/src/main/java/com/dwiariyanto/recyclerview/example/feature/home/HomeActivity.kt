@@ -14,6 +14,7 @@ package com.dwiariyanto.recyclerview.example.feature.home
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.dwiariyanto.recyclerview.example.R
+import com.dwiariyanto.recyclerview.example.feature.loadmore.LoadMoreActivity
 import com.dwiariyanto.recyclerview.example.feature.multiitem.MultiItemActivity
 import com.dwiariyanto.recyclerview.example.feature.singleitem.SingleItemActivity
 import com.dwiariyanto.recyclerview.example.utils.Navigator
@@ -32,7 +33,8 @@ class HomeActivity : AppCompatActivity() {
 	}
 	
 	private fun setupButton() {
-		btnSingleItem.setOnClickListener { navigator.goto(SingleItemActivity::class.java) }
-		btnMultiItem.setOnClickListener { navigator.goto(MultiItemActivity::class.java) }
+		btnSingleItem.setOnClickListener { navigator.goTo(SingleItemActivity::class.java) }
+		btnMultiItem.setOnClickListener { navigator.goTo(MultiItemActivity::class.java) }
+		btnLoadMore.setOnClickListener { navigator.goTo(LoadMoreActivity::class.java) }
 	}
 }

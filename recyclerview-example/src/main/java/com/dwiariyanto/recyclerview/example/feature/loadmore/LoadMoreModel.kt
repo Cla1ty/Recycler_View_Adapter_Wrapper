@@ -5,29 +5,12 @@
  *                                                                                                *
  *                                                                                                *
  * Create On:                                                                                     *
- * Sunday, February 18, 2018 at 22:05                                                             *
+ * Sunday, March 04, 2018 at 21:53                                                                *
  *                                                                                                *
  **************************************************************************************************/
 
-package com.dwiariyanto.recyclerview.example.utils
+package com.dwiariyanto.recyclerview.example.feature.loadmore
 
-import android.content.Intent
-import com.dwiariyanto.recyclerview.example.feature.home.HomeActivity
-import javax.inject.Inject
-
-class Navigator
-@Inject constructor(
-		private val context: HomeActivity
-) {
-	
-	fun goTo(
-			clazz: Class<*>
-	) {
-		Intent(
-				context,
-				clazz
-		).also {
-			context.startActivity(it)
-		}
-	}
-}
+class LoadMoreModel(
+		val number: String
+)

@@ -42,6 +42,9 @@ class MultiItemHorizontalAdapter
 
 ## Change Log
 ```
+2.2.0
++ LoadMore
+
 2.1.2
 ~ RCA: Fix Bug ItemDecoration + DiffUtils
 + ItemDecoration (Replacement for GridSpanContentDecoration & LinearSpanContentDecoration)

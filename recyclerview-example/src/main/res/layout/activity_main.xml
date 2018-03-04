@@ -6,7 +6,6 @@
 	android:layout_height="match_parent"
 	android:gravity="center"
 	android:orientation="vertical"
-	tools:context="com.dwiariyanto.recyclerview.example.feature.home.HomeActivity"
 	>
 	
 	<Button
@@ -14,10 +13,6 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="Single Item"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintLeft_toLeftOf="parent"
-		app:layout_constraintRight_toRightOf="parent"
-		app:layout_constraintTop_toTopOf="parent"
 		/>
 	
 	<Button
@@ -25,9 +20,12 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="Multi Item"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintLeft_toLeftOf="parent"
-		app:layout_constraintRight_toRightOf="parent"
-		app:layout_constraintTop_toTopOf="parent"
+		/>
+	
+	<Button
+		android:id="@+id/btnLoadMore"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Load More"
 		/>
 </LinearLayout>

@@ -15,43 +15,64 @@ import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.dwiariyanto.recyclerview.R
+import com.dwiariyanto.recyclerview.itemview.LoadMoreData
+import com.dwiariyanto.recyclerview.itemview.LoadMoreItem
 import java.util.*
 
 abstract class BaseRecyclerViewAdapter(
 		vararg items: BaseItemView<*>
 ) : RecyclerView.Adapter<RecyclerViewHolder>() {
 	
-	private val itemLayouts = ArrayList<BaseItemView<*>>()
+	private var numberItemBeforeLoadMore = -1
+	private var onLoadMore: ((lastSizeData: Int) -> Unit)? = null
+	private var isLoadMoreExecute = false
+	private var isLoadMoreEnable = false
+		get() = numberItemBeforeLoadMore >= 0
 	
-	private var oldDataName = mutableListOf<String>()
+	private val itemLayouts = ArrayList<BaseItemView<*>>()
+	private var dataName = mutableListOf<String>()
+	
 	var data: List<Any>? = null
 		set(value) {
+			isLoadMoreExecute = false
+			
+			val newValue = when {
+				isLoadMoreEnable && value != null && value.isNotEmpty() -> {
+					val newValue = mutableListOf<Any>()
+					newValue.addAll(value)
+					newValue.add(LoadMoreData())
+					newValue
+				}
+				else                                                    -> {
+					value
+				}
+			}
+			
 			val result = DiffUtil.calculateDiff(object : DiffUtil.Callback() {
 				override fun getOldListSize(): Int = field?.size
 				                                     ?: 0
 				
-				override fun getNewListSize(): Int = value?.size
+				override fun getNewListSize(): Int = newValue?.size
 				                                     ?: 0
 				
 				override fun areItemsTheSame(
 						oldItemPosition: Int,
 						newItemPosition: Int
 				): Boolean =
-						field != null && value != null && field!![oldItemPosition] == value[newItemPosition]
+						field != null && newValue != null && field!![oldItemPosition] == newValue[newItemPosition]
 				
 				override fun areContentsTheSame(
 						oldItemPosition: Int,
 						newItemPosition: Int
 				): Boolean =
-						field != null && value != null && field!![oldItemPosition] == value[newItemPosition]
+						field != null && newValue != null && field!![oldItemPosition] == newValue[newItemPosition]
 			})
 			
-			if (field != null) {
-				oldDataName.clear()
-				field!!.forEach { oldDataName.add(it::class.java.name) }
-			}
+			dataName.clear()
+			newValue?.forEach { dataName.add(it::class.java.name) }
 			
-			field = value
+			field = newValue
 			result.dispatchUpdatesTo(this)
 		}
 	
@@ -102,6 +123,10 @@ abstract class BaseRecyclerViewAdapter(
 				holder,
 				data!![position]
 		)
+		
+		if (isLoadMoreEnable && position >= itemCount - numberItemBeforeLoadMore - 1) {
+			performLoadMore()
+		}
 	}
 	
 	override fun onViewRecycled(holder: RecyclerViewHolder) {
@@ -113,9 +138,39 @@ abstract class BaseRecyclerViewAdapter(
 	                                   ?: 0
 	
 	override fun getItemViewType(position: Int): Int {
-		val name = data!![position]::class.java.name
+		val name = dataName[position]
 		return (0 until itemLayouts.size).firstOrNull { itemLayouts[it].id == name }
 		       ?: throw IllegalArgumentException("Item View \"$name\" Not Found")
+	}
+	
+	fun enableLoadMore(
+			numberItemBeforeLoadMore: Int = 0,
+			layoutId: Int = R.layout.item_load_more
+	) {
+		if (itemLayouts.none { it.id == LoadMoreData::class.java.name }) {
+			itemLayouts.add(LoadMoreItem(layoutId))
+		}
+		this.numberItemBeforeLoadMore = numberItemBeforeLoadMore
+	}
+	
+	private fun performLoadMore() {
+		if (isLoadMoreExecute) return
+		isLoadMoreExecute = true
+		
+		onLoadMore?.invoke(itemCount - 1)
+	}
+	
+	fun onLoadMore(onLoadMore: (lastSizeData: Int) -> Unit) {
+		this.onLoadMore = onLoadMore
+	}
+	
+	fun updateData(updateData: List<Any>) {
+		val newData = mutableListOf<Any>()
+		data?.filter { it !is LoadMoreData }
+				?.forEach { newData.add(it) }
+		updateData.forEach { newData.add(it) }
+		
+		data = newData
 	}
 	
 }

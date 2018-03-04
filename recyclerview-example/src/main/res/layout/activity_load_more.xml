@@ -5,33 +5,14 @@
   ~                             Copyright © 2018. All rights reserved.                            ~
   ~                                                                                               ~
   ~                                                                                               ~
-  ~ Last modified:                                                                                ~
-  ~ Wednesday, February 07, 2018 at 22:58                                                         ~
+  ~ Create On:                                                                                    ~
+  ~ Sunday, March 04, 2018 at 21:50                                                               ~
   ~                                                                                               ~
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
-<!--
-
-2.2.0
-+ LoadMore
-
-2.1.2
-~ RCA: Fix Bug ItemDecoration + DiffUtils
-+ ItemDecoration (Replacement for GridSpanContentDecoration & LinearSpanContentDecoration)
-~ Build RecyclerView on Attach Event
-+ OnRecycler
-
-2.1.1
-~ fix bug LinearSpanContentDecoration Horizontal
-~ fix bug ItemDecoration + DiffUtils
-- IRecyclerViewData
-
-2.1.0
-- re-code (for best practice on kotlin)
-
-2.0.0
-- change language from java to kotlin
-
--->
-
-<resources></resources>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context="com.dwiariyanto.recyclerview.example.feature.loadmore.LoadMoreActivity"></android.support.constraint.ConstraintLayout>

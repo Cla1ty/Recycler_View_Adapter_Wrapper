@@ -16,7 +16,7 @@ abstract class BaseItemView<in DATA : Any>(
 		internal val layoutId: Int
 ) {
 	
-	internal val id: String = clazz.name
+	internal val id: String by lazy { clazz.name }
 	internal var bind: ((holder: RecyclerViewHolder, data: Any) -> Unit)? = null
 	
 	init {

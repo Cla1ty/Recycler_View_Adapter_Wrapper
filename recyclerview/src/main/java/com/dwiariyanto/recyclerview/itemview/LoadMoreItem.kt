@@ -5,29 +5,27 @@
  *                                                                                                *
  *                                                                                                *
  * Create On:                                                                                     *
- * Sunday, February 18, 2018 at 22:05                                                             *
+ * Sunday, March 04, 2018 at 21:05                                                                *
  *                                                                                                *
  **************************************************************************************************/
 
-package com.dwiariyanto.recyclerview.example.utils
+package com.dwiariyanto.recyclerview.itemview
 
-import android.content.Intent
-import com.dwiariyanto.recyclerview.example.feature.home.HomeActivity
-import javax.inject.Inject
+import com.dwiariyanto.recyclerview.adapter.BaseItemView
+import com.dwiariyanto.recyclerview.adapter.RecyclerViewHolder
 
-class Navigator
-@Inject constructor(
-		private val context: HomeActivity
+internal class LoadMoreItem(
+		layoutId: Int
+) : BaseItemView<LoadMoreData>(
+		LoadMoreData::class.java,
+		layoutId
 ) {
 	
-	fun goTo(
-			clazz: Class<*>
+	override fun onBind(
+			holder: RecyclerViewHolder,
+			data: LoadMoreData
 	) {
-		Intent(
-				context,
-				clazz
-		).also {
-			context.startActivity(it)
-		}
 	}
 }
+
+internal class LoadMoreData

@@ -5,29 +5,31 @@
  *                                                                                                *
  *                                                                                                *
  * Create On:                                                                                     *
- * Sunday, February 18, 2018 at 22:05                                                             *
+ * Sunday, March 04, 2018 at 21:51                                                                *
  *                                                                                                *
  **************************************************************************************************/
 
-package com.dwiariyanto.recyclerview.example.utils
+package com.dwiariyanto.recyclerview.example.feature.loadmore
 
-import android.content.Intent
-import com.dwiariyanto.recyclerview.example.feature.home.HomeActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import com.dwiariyanto.recyclerview.adapter.BaseRecyclerViewAdapter
+import com.dwiariyanto.recyclerview.decoration.ItemDecoration
+import com.dwiariyanto.recyclerview.example.utils.dp
 import javax.inject.Inject
 
-class Navigator
+class LoadMoreAdapter
 @Inject constructor(
-		private val context: HomeActivity
+		loadMoreItem: LoadMoreItem
+) : BaseRecyclerViewAdapter(
+		loadMoreItem
 ) {
 	
-	fun goTo(
-			clazz: Class<*>
-	) {
-		Intent(
-				context,
-				clazz
-		).also {
-			context.startActivity(it)
+	override fun build(recyclerView: RecyclerView) {
+		recyclerView.apply {
+			addItemDecoration(ItemDecoration(8.dp))
+			layoutManager = LinearLayoutManager(context)
 		}
+		enableLoadMore()
 	}
 }
