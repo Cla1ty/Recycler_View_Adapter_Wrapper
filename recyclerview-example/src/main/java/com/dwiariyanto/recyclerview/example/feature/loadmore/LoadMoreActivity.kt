@@ -39,20 +39,30 @@ class LoadMoreActivity : AppCompatActivity() {
 		adapter.onLoadMore {
 			info("LOAD MORE")
 			
-			runnable?.apply { handler.removeCallbacks(this) }
-			runnable = Runnable {
-				val updateData = getUpdateData(it)
-				adapter.updateData(updateData)
-			}
-			handler.postDelayed(
-					runnable,
-					2000
-			)
+			removeCallback()
+			loadMore(it)
 		}
+	}
+	
+	private fun loadMore(lastSizeData: Int) {
+		runnable = Runnable {
+			val updateData = getUpdateData(lastSizeData - 5)
+			adapter.updateData(updateData) { lastData, updateData ->
+				(lastData as LoadMoreModel).number == (updateData as LoadMoreModel).number
+			}
+		}
+		handler.postDelayed(
+				runnable,
+				2000
+		)
 	}
 	
 	override fun onStop() {
 		super.onStop()
+		removeCallback()
+	}
+	
+	private fun removeCallback() {
 		runnable?.apply { handler.removeCallbacks(this) }
 	}
 	
@@ -64,8 +74,10 @@ class LoadMoreActivity : AppCompatActivity() {
 	
 	private fun getUpdateData(lastSizeData: Int): MutableList<LoadMoreModel> {
 		val updateData = mutableListOf<LoadMoreModel>()
-		(lastSizeData until lastSizeData + 10).forEach {
-			updateData.add(LoadMoreModel(it.toString()))
+		if (lastSizeData < 50) {
+			(lastSizeData until lastSizeData + 10).forEach {
+				updateData.add(LoadMoreModel(it.toString()))
+			}
 		}
 		return updateData
 	}

@@ -42,6 +42,10 @@ class MultiItemHorizontalAdapter
 
 ## Change Log
 ```
+2.2.1
++ No More Data
++ Duplicate prediction
+
 2.2.0
 + LoadMore
 

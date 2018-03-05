@@ -18,6 +18,8 @@ import android.view.ViewGroup
 import com.dwiariyanto.recyclerview.R
 import com.dwiariyanto.recyclerview.itemview.LoadMoreData
 import com.dwiariyanto.recyclerview.itemview.LoadMoreItem
+import com.dwiariyanto.recyclerview.itemview.NoMoreData
+import com.dwiariyanto.recyclerview.itemview.NoMoreItem
 import java.util.*
 
 abstract class BaseRecyclerViewAdapter(
@@ -35,16 +37,18 @@ abstract class BaseRecyclerViewAdapter(
 	
 	var data: List<Any>? = null
 		set(value) {
-			isLoadMoreExecute = false
+			if (value == null || value.last()::class.java.name != NoMoreData::class.java.name) {
+				isLoadMoreExecute = false
+			}
 			
 			val newValue = when {
-				isLoadMoreEnable && value != null && value.isNotEmpty() -> {
+				isLoadMoreEnable && value != null && value.isNotEmpty() && !isLoadMoreExecute -> {
 					val newValue = mutableListOf<Any>()
 					newValue.addAll(value)
 					newValue.add(LoadMoreData())
 					newValue
 				}
-				else                                                    -> {
+				else                                                                          -> {
 					value
 				}
 			}
@@ -145,11 +149,15 @@ abstract class BaseRecyclerViewAdapter(
 	
 	fun enableLoadMore(
 			numberItemBeforeLoadMore: Int = 0,
-			layoutId: Int = R.layout.item_load_more
+			layoutId: Int = R.layout.item_load_more,
+			noMoreLayoutId: Int = R.layout.item_no_more
 	) {
-		if (itemLayouts.none { it.id == LoadMoreData::class.java.name }) {
-			itemLayouts.add(LoadMoreItem(layoutId))
-		}
+		itemLayouts.filter { it.id == LoadMoreData::class.java.name || it.id == NoMoreData::class.java.name }
+				.forEach { itemLayouts.remove(it) }
+		
+		itemLayouts.add(LoadMoreItem(layoutId))
+		itemLayouts.add(NoMoreItem(noMoreLayoutId))
+		
 		this.numberItemBeforeLoadMore = numberItemBeforeLoadMore
 	}
 	
@@ -164,14 +172,34 @@ abstract class BaseRecyclerViewAdapter(
 		this.onLoadMore = onLoadMore
 	}
 	
-	fun updateData(updateData: List<Any>) {
+	fun updateData(
+			updateData: List<Any>,
+			duplicatePrediction: ((lastData: Any, updateData: Any) -> Boolean)? = null
+	) {
 		val newData = mutableListOf<Any>()
 		data?.filter { it !is LoadMoreData }
 				?.forEach { newData.add(it) }
-		updateData.forEach { newData.add(it) }
+		
+		if (updateData.isNotEmpty()) {
+			var startAdd = 0
+			if (duplicatePrediction != null) {
+				updateData.forEachIndexed { index, data ->
+					if (duplicatePrediction.invoke(
+								newData.last(),
+								data
+						)) {
+						startAdd = index + 1
+					}
+				}
+			}
+			(startAdd until updateData.size).forEach {
+				newData.add(updateData[it])
+			}
+		} else {
+			newData.add(NoMoreData())
+		}
 		
 		data = newData
 	}
-	
 }
 
