@@ -21,11 +21,18 @@
 		android:layout_height="wrap_content"
 		android:text="Multi Item"
 		/>
-	
+
 	<Button
 		android:id="@+id/btnLoadMore"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="Load More"
+		/>
+
+	<Button
+		android:id="@+id/btnEmpty"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Empty"
 		/>
 </LinearLayout>

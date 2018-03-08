@@ -42,6 +42,13 @@ class MultiItemHorizontalAdapter
 
 ## Change Log
 ```
+2.2.2
++ config for load more
++ extra tag on view holder
++ extension
+~ extra size for item decoration
+~ Fix crash (empty data)
+
 2.2.1
 + No More Data
 + Duplicate prediction

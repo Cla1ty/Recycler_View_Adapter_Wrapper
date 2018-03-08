@@ -12,28 +12,32 @@
 package com.dwiariyanto.recyclerview.adapter
 
 abstract class BaseItemView<in DATA : Any>(
-		clazz: Class<DATA>,
-		internal val layoutId: Int
-) {
-	
-	internal val id: String by lazy { clazz.name }
-	internal var bind: ((holder: RecyclerViewHolder, data: Any) -> Unit)? = null
-	
-	init {
-		bind = { holder, data ->
-			onBind(
-					holder,
-					data as DATA
-			)
-		}
-	}
-	
-	open fun onCreate(holder: RecyclerViewHolder) {}
-	
-	abstract fun onBind(
-			holder: RecyclerViewHolder,
-			data: DATA
-	)
-	
-	open fun onRecycler(holder: RecyclerViewHolder) {}
+        clazz: Class<DATA>,
+        internal val layoutId: Int
+)
+{
+    internal val id: String by lazy { clazz.name }
+    internal var bind: ((holder: RecyclerViewHolder, data: Any) -> Unit)? = null
+
+    init
+    {
+        bind = { holder, data ->
+            onBind(holder, data as DATA)
+        }
+    }
+
+    open fun onCreate(holder: RecyclerViewHolder)
+    {
+    }
+
+    open fun onBind(
+            holder: RecyclerViewHolder,
+            data: DATA
+    )
+    {
+    }
+
+    open fun onRecycler(holder: RecyclerViewHolder)
+    {
+    }
 }

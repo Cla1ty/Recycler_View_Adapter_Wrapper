@@ -5,31 +5,26 @@
  *                                                                                                *
  *                                                                                                *
  * Create On:                                                                                     *
- * Sunday, February 18, 2018 at 21:48                                                             *
+ * Thursday, March 08, 2018 at 23:10                                                              *
  *                                                                                                *
  **************************************************************************************************/
 
-package com.dwiariyanto.recyclerview.example.feature.singleitem
+package com.dwiariyanto.recyclerview.config
 
-import android.support.v7.widget.RecyclerView
-import com.dwiariyanto.recyclerview.adapter.BaseRecyclerViewAdapter
-import com.dwiariyanto.recyclerview.example.utils.sp
-import com.dwiariyanto.recyclerview.extension.erViDecor
-import com.dwiariyanto.recyclerview.extension.erViManager
-import javax.inject.Inject
+import com.dwiariyanto.recyclerview.R
 
-class SingleItemAdapter
-@Inject constructor(
-        singleItemItem: SingleItemItem
-) : BaseRecyclerViewAdapter(
-        singleItemItem
-)
+object ErViAdapter
 {
-    override fun build(recyclerView: RecyclerView)
+    private val configData = Config()
+
+    fun config(config: Config.() -> Unit)
     {
-        recyclerView.apply {
-            erViDecor { erViSpanSize = 16.sp }
-            erViManager { erViCount = 2 }
-        }
+        config.invoke(configData)
     }
+
+    data class Config(
+            var erViLoadMore: Int = R.layout.item_load_more,
+            var erViNoItem: Int = R.layout.item_no_more,
+            var erViNumberBeforeLoadMore: Int = 0
+    )
 }

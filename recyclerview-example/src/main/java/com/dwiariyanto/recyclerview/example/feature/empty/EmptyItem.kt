@@ -5,31 +5,25 @@
  *                                                                                                *
  *                                                                                                *
  * Create On:                                                                                     *
- * Sunday, February 18, 2018 at 21:48                                                             *
+ * Thursday, March 08, 2018 at 22:03                                                              *
  *                                                                                                *
  **************************************************************************************************/
 
-package com.dwiariyanto.recyclerview.example.feature.singleitem
+package com.dwiariyanto.recyclerview.example.feature.empty
 
-import android.support.v7.widget.RecyclerView
-import com.dwiariyanto.recyclerview.adapter.BaseRecyclerViewAdapter
-import com.dwiariyanto.recyclerview.example.utils.sp
-import com.dwiariyanto.recyclerview.extension.erViDecor
-import com.dwiariyanto.recyclerview.extension.erViManager
+import com.dwiariyanto.recyclerview.adapter.BaseItemView
+import com.dwiariyanto.recyclerview.adapter.RecyclerViewHolder
+import com.dwiariyanto.recyclerview.example.R
 import javax.inject.Inject
 
-class SingleItemAdapter
-@Inject constructor(
-        singleItemItem: SingleItemItem
-) : BaseRecyclerViewAdapter(
-        singleItemItem
+class EmptyItem
+@Inject constructor() : BaseItemView<EmptyModel>(
+        EmptyModel::class.java,
+        R.layout.item_textview
 )
 {
-    override fun build(recyclerView: RecyclerView)
+    override fun onBind(holder: RecyclerViewHolder, data: EmptyModel)
     {
-        recyclerView.apply {
-            erViDecor { erViSpanSize = 16.sp }
-            erViManager { erViCount = 2 }
-        }
     }
 }
+

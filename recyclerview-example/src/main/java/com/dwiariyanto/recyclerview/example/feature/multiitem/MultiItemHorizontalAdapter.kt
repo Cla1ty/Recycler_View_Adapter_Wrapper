@@ -11,12 +11,12 @@
 
 package com.dwiariyanto.recyclerview.example.feature.multiitem
 
-import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.widget.LinearLayout
 import com.dwiariyanto.recyclerview.adapter.BaseRecyclerViewAdapter
-import com.dwiariyanto.recyclerview.decoration.ItemDecoration
 import com.dwiariyanto.recyclerview.example.utils.dp
+import com.dwiariyanto.recyclerview.extension.erViDecor
+import com.dwiariyanto.recyclerview.extension.erViManager
 import javax.inject.Inject
 
 class MultiItemHorizontalAdapter
@@ -30,12 +30,8 @@ class MultiItemHorizontalAdapter
 	
 	override fun build(recyclerView: RecyclerView) {
 		recyclerView.apply {
-			addItemDecoration(ItemDecoration(8.dp))
-			layoutManager = LinearLayoutManager(
-					context,
-					LinearLayout.HORIZONTAL,
-					false
-			)
+			erViDecor { erViSpanSize = 8.dp }
+			erViManager { erViOrientation = LinearLayout.HORIZONTAL }
 		}
 	}
 }

@@ -5,31 +5,30 @@
  *                                                                                                *
  *                                                                                                *
  * Create On:                                                                                     *
- * Sunday, February 18, 2018 at 21:48                                                             *
+ * Thursday, March 08, 2018 at 21:59                                                              *
  *                                                                                                *
  **************************************************************************************************/
 
-package com.dwiariyanto.recyclerview.example.feature.singleitem
+package com.dwiariyanto.recyclerview.example.feature.empty
 
-import android.support.v7.widget.RecyclerView
-import com.dwiariyanto.recyclerview.adapter.BaseRecyclerViewAdapter
-import com.dwiariyanto.recyclerview.example.utils.sp
-import com.dwiariyanto.recyclerview.extension.erViDecor
-import com.dwiariyanto.recyclerview.extension.erViManager
+import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import com.dwiariyanto.recyclerview.example.R
+import dagger.android.AndroidInjection
+import kotlinx.android.synthetic.main.recyclerview.*
 import javax.inject.Inject
 
-class SingleItemAdapter
-@Inject constructor(
-        singleItemItem: SingleItemItem
-) : BaseRecyclerViewAdapter(
-        singleItemItem
-)
+class EmptyActivity : AppCompatActivity()
 {
-    override fun build(recyclerView: RecyclerView)
+    @Inject lateinit var adapter: EmptyAdapter
+
+    override fun onCreate(savedInstanceState: Bundle?)
     {
-        recyclerView.apply {
-            erViDecor { erViSpanSize = 16.sp }
-            erViManager { erViCount = 2 }
-        }
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_empty)
+        AndroidInjection.inject(this)
+
+        recyclerView.adapter = adapter
+        adapter.data = emptyList()
     }
 }

@@ -12,20 +12,12 @@
 package com.dwiariyanto.recyclerview.itemview
 
 import com.dwiariyanto.recyclerview.adapter.BaseItemView
-import com.dwiariyanto.recyclerview.adapter.RecyclerViewHolder
 
 internal class LoadMoreItem(
-		layoutId: Int
+        layoutId: Int
 ) : BaseItemView<LoadMoreData>(
-		LoadMoreData::class.java,
-		layoutId
-) {
-	
-	override fun onBind(
-			holder: RecyclerViewHolder,
-			data: LoadMoreData
-	) {
-	}
-}
+        LoadMoreData::class.java,
+        layoutId
+)
 
 internal class LoadMoreData

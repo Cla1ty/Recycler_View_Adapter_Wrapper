@@ -14,6 +14,10 @@ package com.dwiariyanto.recyclerview.adapter
 import android.support.v7.widget.RecyclerView
 import android.view.View
 
-class RecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-	var tag: Any? = null
+class RecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+{
+    var tag: Any? = null
+    var tag1: Any? = null
+    var tag2: Any? = null
+    var tag3: Any? = null
 }

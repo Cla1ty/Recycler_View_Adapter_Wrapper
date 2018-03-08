@@ -1,30 +1,14 @@
 /**************************************************************************************************
  *                                                                                                *
  *                         Created by Dwi Ariyanto (creatures99@gmail.com)                        *
- *                             Copyright © 2017. All rights reserved.                             *
+ *                             Copyright © 2018. All rights reserved.                             *
  *                                                                                                *
  *                                                                                                *
  * Create On:                                                                                     *
- * Friday, July 07, 2017                                                                          *
+ * Thursday, March 08, 2018 at 22:03                                                              *
  *                                                                                                *
  **************************************************************************************************/
 
-package com.dwiariyanto.recyclerview.scrollListener
+package com.dwiariyanto.recyclerview.example.feature.empty
 
-import android.support.v7.widget.RecyclerView
-
-class SimpleLoadMore(private val loadMore: () -> Unit) : RecyclerView.OnScrollListener() {
-	fun setupWithRecyclerView(recyclerView: RecyclerView) {
-		recyclerView.addOnScrollListener(this)
-	}
-	
-	override fun onScrolled(
-			recyclerView: RecyclerView?,
-			dx: Int,
-			dy: Int
-	) {
-		if (dy > 0 && !recyclerView!!.canScrollVertically(1)) {
-			loadMore.invoke()
-		}
-	}
-}
+class EmptyModel

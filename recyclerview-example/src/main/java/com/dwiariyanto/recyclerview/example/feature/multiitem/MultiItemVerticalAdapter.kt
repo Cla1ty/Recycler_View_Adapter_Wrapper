@@ -11,9 +11,9 @@
 
 package com.dwiariyanto.recyclerview.example.feature.multiitem
 
-import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.dwiariyanto.recyclerview.adapter.BaseRecyclerViewAdapter
+import com.dwiariyanto.recyclerview.extension.erViManager
 import javax.inject.Inject
 
 class MultiItemVerticalAdapter
@@ -24,9 +24,7 @@ class MultiItemVerticalAdapter
 ) {
 	
 	override fun build(recyclerView: RecyclerView) {
-		recyclerView.apply {
-			layoutManager = LinearLayoutManager(context)
-		}
+		recyclerView.erViManager {  }
 	}
 }
 
