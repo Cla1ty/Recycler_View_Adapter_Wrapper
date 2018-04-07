@@ -15,13 +15,31 @@ import javax.inject.Inject
 
 class MultiItemPresenter
 @Inject constructor(
-		activity: MultiItemActivity
+		private val activity: MultiItemActivity
 ) {
 	
 	private val view: MultiItemView = activity
+	private var data: List<MultiItemVerticalModel>? = null
 	
 	fun loadData() {
+		data = MultiItemVerticalModel.data
 		view.showData(MultiItemVerticalModel.data)
+	}
+
+	fun reloadData(){
+		val data = mutableListOf<MultiItemVerticalModel>()
+		MultiItemVerticalModel.data.forEach {
+			val newListData = mutableListOf<Any>()
+
+			it.dataList.forEach {
+				newListData.add(it)
+			}
+
+			val newData = MultiItemVerticalModel(it.type, newListData)
+			data.add(newData)
+		}
+
+		view.showData(data)
 	}
 	
 	fun clickMore() {

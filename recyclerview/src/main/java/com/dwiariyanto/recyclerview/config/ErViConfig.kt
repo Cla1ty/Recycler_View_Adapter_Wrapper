@@ -5,19 +5,26 @@
  *                                                                                                *
  *                                                                                                *
  * Create On:                                                                                     *
- * Thursday, March 08, 2018 at 22:03                                                              *
+ * Thursday, March 08, 2018 at 23:10                                                              *
  *                                                                                                *
  **************************************************************************************************/
 
-package com.dwiariyanto.recyclerview.example.feature.empty
+package com.dwiariyanto.recyclerview.config
 
-import com.dwiariyanto.recyclerview.adapter.BaseItemView
-import com.dwiariyanto.recyclerview.example.R
-import javax.inject.Inject
+import com.dwiariyanto.recyclerview.R
 
-class EmptyItem
-@Inject constructor() : BaseItemView<EmptyModel>(
-        EmptyModel::class.java,
-        R.layout.item_textview
-)
+object ErViConfig
+{
+    val configData: Config by lazy { Config() }
 
+    fun config(config: Config.() -> Unit)
+    {
+        config.invoke(configData)
+    }
+
+    data class Config(
+            var erViLoadMore: Int = R.layout.item_load_more,
+            var erViNoItem: Int = R.layout.item_no_more,
+            var erViNumberBeforeLoadMore: Int = 0
+    )
+}

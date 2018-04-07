@@ -16,6 +16,7 @@ import com.dwiariyanto.recyclerview.example.feature.empty.EmptyActivity
 import com.dwiariyanto.recyclerview.example.feature.home.HomeActivity
 import com.dwiariyanto.recyclerview.example.feature.loadmore.LoadMoreActivity
 import com.dwiariyanto.recyclerview.example.feature.multiitem.MultiItemActivity
+import com.dwiariyanto.recyclerview.example.feature.multiitem2.MultiItem2Activity
 import com.dwiariyanto.recyclerview.example.feature.singleitem.SingleItemActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -26,4 +27,5 @@ import dagger.android.ContributesAndroidInjector
 	@ContributesAndroidInjector(modules = [(EmptyModule::class)]) abstract fun provideMultiItemActivity(): MultiItemActivity
 	@ContributesAndroidInjector(modules = [(EmptyModule::class)]) abstract fun provideLoadMoreActivity(): LoadMoreActivity
 	@ContributesAndroidInjector(modules = [(EmptyModule::class)]) abstract fun provideEmptyActivity(): EmptyActivity
+	@ContributesAndroidInjector(modules = [(EmptyModule::class)]) abstract fun provideMultiItem2Activity(): MultiItem2Activity
 }

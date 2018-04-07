@@ -11,6 +11,7 @@
 
 package com.dwiariyanto.recyclerview.adapter
 
+@Suppress("UNCHECKED_CAST")
 abstract class BaseItemView<in DATA : Any>(
         clazz: Class<DATA>,
         internal val layoutId: Int

@@ -5,19 +5,16 @@
  *                                                                                                *
  *                                                                                                *
  * Create On:                                                                                     *
- * Thursday, March 08, 2018 at 22:03                                                              *
+ * Wednesday, March 28, 2018 at 22:21                                                             *
  *                                                                                                *
  **************************************************************************************************/
 
-package com.dwiariyanto.recyclerview.example.feature.empty
+package com.dwiariyanto.recyclerview.example.feature.multiitem2
 
-import com.dwiariyanto.recyclerview.adapter.BaseItemView
-import com.dwiariyanto.recyclerview.example.R
-import javax.inject.Inject
+class MultiItem2HeaderData
 
-class EmptyItem
-@Inject constructor() : BaseItemView<EmptyModel>(
-        EmptyModel::class.java,
-        R.layout.item_textview
+data class MultiItem2ContentData(
+        val content1: String = "ini content 1",
+        val content2: String = "ini content 2",
+        val content3: String = "ini content 3"
 )
-

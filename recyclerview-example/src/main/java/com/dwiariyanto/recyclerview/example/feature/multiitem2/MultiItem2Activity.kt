@@ -5,56 +5,44 @@
  *                                                                                                *
  *                                                                                                *
  * Create On:                                                                                     *
- * Sunday, February 18, 2018 at 22:43                                                             *
+ * Wednesday, March 28, 2018 at 22:14                                                             *
  *                                                                                                *
  **************************************************************************************************/
 
-package com.dwiariyanto.recyclerview.example.feature.multiitem
+package com.dwiariyanto.recyclerview.example.feature.multiitem2
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.widget.Toast
 import com.dwiariyanto.recyclerview.example.R
 import dagger.android.AndroidInjection
-import kotlinx.android.synthetic.main.activity_multi_item.*
+import kotlinx.android.synthetic.main.recyclerview.*
 import javax.inject.Inject
 
-class MultiItemActivity : AppCompatActivity(),
-    MultiItemView
+class MultiItem2Activity : AppCompatActivity()
 {
+    private val dataDummy = listOf(
+            MultiItem2HeaderData(),
+            MultiItem2ContentData(),
+            MultiItem2ContentData(),
+            MultiItem2ContentData(),
+            MultiItem2ContentData(),
+            MultiItem2ContentData(),
+            MultiItem2ContentData(),
+            MultiItem2ContentData(),
+            MultiItem2ContentData(),
+            MultiItem2ContentData(),
+            MultiItem2ContentData()
+    )
 
-    @Inject lateinit var presenter: MultiItemPresenter
-    @Inject lateinit var adapter: MultiItemVerticalAdapter
+    @Inject lateinit var adapter: MultiItem2Adapter
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.recyclerview)
         AndroidInjection.inject(this)
-        setContentView(R.layout.activity_multi_item)
 
         recyclerView.adapter = adapter
-        presenter.loadData()
-
-        buttonReloadData()
-    }
-
-    private fun buttonReloadData()
-    {
-        btnReload.setOnClickListener { presenter.reloadData() }
-    }
-
-    override fun showData(dataList: List<Any>)
-    {
-        adapter.data = dataList
-    }
-
-    override fun showToast(message: String)
-    {
-        Toast.makeText(
-                this,
-                message,
-                Toast.LENGTH_SHORT
-        )
-                .show()
+        adapter.data = dataDummy
     }
 }

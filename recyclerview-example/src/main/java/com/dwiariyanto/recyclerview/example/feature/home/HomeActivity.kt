@@ -17,6 +17,7 @@ import com.dwiariyanto.recyclerview.example.R
 import com.dwiariyanto.recyclerview.example.feature.empty.EmptyActivity
 import com.dwiariyanto.recyclerview.example.feature.loadmore.LoadMoreActivity
 import com.dwiariyanto.recyclerview.example.feature.multiitem.MultiItemActivity
+import com.dwiariyanto.recyclerview.example.feature.multiitem2.MultiItem2Activity
 import com.dwiariyanto.recyclerview.example.feature.singleitem.SingleItemActivity
 import com.dwiariyanto.recyclerview.example.utils.Navigator
 import dagger.android.AndroidInjection
@@ -30,6 +31,7 @@ class HomeActivity : AppCompatActivity() {
 		super.onCreate(savedInstanceState)
 		AndroidInjection.inject(this)
 		setContentView(R.layout.activity_main)
+
 		setupButton()
 	}
 	
@@ -38,5 +40,6 @@ class HomeActivity : AppCompatActivity() {
 		btnMultiItem.setOnClickListener { navigator.goTo(MultiItemActivity::class.java) }
 		btnLoadMore.setOnClickListener { navigator.goTo(LoadMoreActivity::class.java) }
 		btnEmpty.setOnClickListener { navigator.goTo(EmptyActivity::class.java) }
+		btnMultiItem2.setOnClickListener { navigator.goTo(MultiItem2Activity::class.java) }
 	}
 }

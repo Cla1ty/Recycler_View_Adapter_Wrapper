@@ -5,26 +5,34 @@
  *                                                                                                *
  *                                                                                                *
  * Create On:                                                                                     *
- * Thursday, March 08, 2018 at 23:10                                                              *
+ * Wednesday, March 28, 2018 at 22:30                                                             *
  *                                                                                                *
  **************************************************************************************************/
 
-package com.dwiariyanto.recyclerview.config
+package com.dwiariyanto.recyclerview.example.feature.multiitem2
 
-import com.dwiariyanto.recyclerview.R
+import android.support.v7.widget.RecyclerView
+import com.dwiariyanto.recyclerview.adapter.BaseRecyclerViewAdapter
+import com.dwiariyanto.recyclerview.example.utils.dp
+import com.dwiariyanto.recyclerview.extension.erViDecor
+import com.dwiariyanto.recyclerview.extension.erViManager
+import javax.inject.Inject
 
-object ErViAdapter
+class MultiItem2Adapter
+@Inject constructor(
+        val headerItem: MultiItem2HeaderItem,
+        val contentItem: MultiItem2ContentItem
+) : BaseRecyclerViewAdapter(
+        headerItem,
+        contentItem
+)
 {
-    private val configData = Config()
-
-    fun config(config: Config.() -> Unit)
+    override fun build(recyclerView: RecyclerView)
     {
-        config.invoke(configData)
+        recyclerView.apply {
+            erViDecor { erViExtraBottom = 10.dp }
+            erViManager { }
+            isNestedScrollingEnabled = false
+        }
     }
-
-    data class Config(
-            var erViLoadMore: Int = R.layout.item_load_more,
-            var erViNoItem: Int = R.layout.item_no_more,
-            var erViNumberBeforeLoadMore: Int = 0
-    )
 }

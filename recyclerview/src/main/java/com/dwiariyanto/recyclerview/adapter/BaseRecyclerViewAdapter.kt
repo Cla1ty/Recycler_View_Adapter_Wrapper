@@ -15,7 +15,7 @@ import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.dwiariyanto.recyclerview.R
+import com.dwiariyanto.recyclerview.config.ErViConfig
 import com.dwiariyanto.recyclerview.itemview.LoadMoreData
 import com.dwiariyanto.recyclerview.itemview.LoadMoreItem
 import com.dwiariyanto.recyclerview.itemview.NoMoreData
@@ -26,7 +26,6 @@ abstract class BaseRecyclerViewAdapter(
         vararg items: BaseItemView<*>
 ) : RecyclerView.Adapter<RecyclerViewHolder>()
 {
-
     private var numberItemBeforeLoadMore = -1
     private var onLoadMore: ((lastSizeData: Int) -> Unit)? = null
     private var isLoadMoreExecute = false
@@ -81,18 +80,6 @@ abstract class BaseRecyclerViewAdapter(
             result.dispatchUpdatesTo(this)
         }
 
-    @Deprecated(
-            "Use recyclerView.adapter = adapter",
-            ReplaceWith("recyclerView.adapter = adapter")
-    ) var recyclerView: RecyclerView? = null
-        set(value)
-        {
-            field = value
-            field?.apply {
-                adapter = this@BaseRecyclerViewAdapter
-            }
-        }
-
     init
     {
         itemLayouts.addAll(items)
@@ -100,18 +87,18 @@ abstract class BaseRecyclerViewAdapter(
 
     abstract fun build(recyclerView: RecyclerView)
 
-    override fun onAttachedToRecyclerView(recyclerView: RecyclerView?)
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView)
     {
-        build(recyclerView!!)
+        build(recyclerView)
     }
 
     override fun onCreateViewHolder(
-            parent: ViewGroup?,
+            parent: ViewGroup,
             viewType: Int
     ): RecyclerViewHolder
     {
         val itemLayout = itemLayouts[viewType]
-        val view = LayoutInflater.from(parent!!.context)
+        val view = LayoutInflater.from(parent.context)
                 .inflate(itemLayout.layoutId, parent, false)
         val holder = RecyclerViewHolder(view)
 
@@ -121,11 +108,11 @@ abstract class BaseRecyclerViewAdapter(
     }
 
     override fun onBindViewHolder(
-            holder: RecyclerViewHolder?,
+            holder: RecyclerViewHolder,
             position: Int
     )
     {
-        val viewType = holder!!.itemViewType
+        val viewType = holder.itemViewType
         val itemLayout = itemLayouts[viewType]
         itemLayout.bind?.invoke(
                 holder,
@@ -154,16 +141,16 @@ abstract class BaseRecyclerViewAdapter(
     }
 
     fun enableLoadMore(
-            numberItemBeforeLoadMore: Int = 0,
-            layoutId: Int = R.layout.item_load_more,
-            noMoreLayoutId: Int = R.layout.item_no_more
+            numberItemBeforeLoadMore: Int = ErViConfig.configData.erViNumberBeforeLoadMore,
+            loadMoreLayoutId: Int = ErViConfig.configData.erViLoadMore,
+            noMoreLayoutId: Int = ErViConfig.configData.erViNoItem
     )
     {
         itemLayouts
                 .filter { it.id == LoadMoreData::class.java.name || it.id == NoMoreData::class.java.name }
                 .forEach { itemLayouts.remove(it) }
 
-        itemLayouts.add(LoadMoreItem(layoutId))
+        itemLayouts.add(LoadMoreItem(loadMoreLayoutId))
         itemLayouts.add(NoMoreItem(noMoreLayoutId))
 
         this.numberItemBeforeLoadMore = numberItemBeforeLoadMore

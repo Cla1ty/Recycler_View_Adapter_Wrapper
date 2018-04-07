@@ -12,7 +12,7 @@
 package com.dwiariyanto.recyclerview.example
 
 import com.dwiariyanto.log.Logger
-import com.dwiariyanto.recyclerview.config.ErViAdapter
+import com.dwiariyanto.recyclerview.config.ErViConfig
 import com.dwiariyanto.recyclerview.example.di.DaggerMainComponent
 import com.dwiariyanto.recyclerview.example.utils.MathHelper
 import dagger.android.AndroidInjector
@@ -34,7 +34,7 @@ class MainApplication : DaggerApplication()
         }
 
         MathHelper.install(this)
-        ErViAdapter.config {
+        ErViConfig.config {
             // change global config here
         }
     }
