@@ -37,7 +37,7 @@ class SingleItemPresenter
 	}
 	
 	private fun remove() {
-		view.showData(SingleItemModel.data2)
+		view.showData(SingleItemModel.data)
 		
 		run = Runnable {
 			add()
@@ -47,7 +47,7 @@ class SingleItemPresenter
 	}
 	
 	private fun add() {
-		view.showData(SingleItemModel.data)
+		view.showData(SingleItemModel.data2)
 		
 		run = Runnable {
 			remove()

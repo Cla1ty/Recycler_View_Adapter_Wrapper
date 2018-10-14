@@ -43,10 +43,10 @@ class ItemDecoration(
 
             val padding = erViSpanSize + erViExtraEdgeSize
             parent.setPadding(
-                    padding,
-                    padding,
-                    padding,
-                    padding
+                    parent.paddingLeft + padding,
+                    parent.paddingTop + padding,
+                    parent.paddingRight + padding,
+                    parent.paddingBottom + padding
             )
         }
 

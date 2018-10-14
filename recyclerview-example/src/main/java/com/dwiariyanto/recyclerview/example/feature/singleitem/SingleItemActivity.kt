@@ -45,6 +45,7 @@ class SingleItemActivity : AppCompatActivity(),
 	
 	override fun showData(dataList: List<SingleItemModel>) {
 		adapter.data = dataList
+		recyclerView.requestLayout()
 	}
 	
 	override fun onItemClick(number: String) {
