@@ -1,29 +1,27 @@
 /**************************************************************************************************
  *                                                                                                *
  *                         Created by Dwi Ariyanto (creatures99@gmail.com)                        *
- *                             Copyright © 2018. All rights reserved.                             *
+ *                             Copyright © 2019. All rights reserved.                             *
  *                                                                                                *
  *                                                                                                *
  * Create On:                                                                                     *
- * Sunday, March 04, 2018 at 21:50                                                                *
+ * Saturday, January 12, 2019 at 10:00                                                            *
  *                                                                                                *
  **************************************************************************************************/
 
-package com.dwiariyanto.recyclerview.example.feature.loadmore
+package com.dwiariyanto.recyclerview.example.feature.loadmorewithoutnomore
 
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import com.dwiariyanto.log.info
 import com.dwiariyanto.recyclerview.example.R
-import com.dwiariyanto.recyclerview.example.feature.loadmorewithoutnomore.LoadMoreWithoutNoMoreModel
-import com.dwiariyanto.recyclerview.example.feature.loadmorewithoutnomore.LoadMoreWithoutNoMoreAdapter
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.recyclerview.*
 import javax.inject.Inject
 
-class LoadMoreActivity : AppCompatActivity() {
-	@Inject lateinit var adapter: LoadMoreAdapter
+class LoadMoreWithoutNoMoreActivity : AppCompatActivity() {
+	@Inject lateinit var adapterMoreWithoutNo: LoadMoreWithoutNoMoreAdapter
 	
 	private val handler = Handler()
 	private var runnable: Runnable? = null
@@ -33,12 +31,12 @@ class LoadMoreActivity : AppCompatActivity() {
 		setContentView(R.layout.recyclerview)
 		AndroidInjection.inject(this)
 		
-		recyclerView.adapter = adapter
+		recyclerView.adapter = adapterMoreWithoutNo
 		
 		val data = getInitiationData()
-		adapter.data = data
+		adapterMoreWithoutNo.data = data
 		
-		adapter.onLoadMore {
+		adapterMoreWithoutNo.onLoadMore {
 			info("LOAD MORE")
 			
 			removeCallback()
@@ -49,8 +47,8 @@ class LoadMoreActivity : AppCompatActivity() {
 	private fun loadMore(lastSizeData: Int) {
 		runnable = Runnable {
 			val updateData = getUpdateData(lastSizeData - 5)
-			adapter.updateData(updateData) { lastData, updateData ->
-				(lastData as LoadMoreModel).number == (updateData as LoadMoreModel).number
+			adapterMoreWithoutNo.updateData(updateData) { lastData, updateData ->
+				(lastData as LoadMoreWithoutNoMoreModel).number == (updateData as LoadMoreWithoutNoMoreModel).number
 			}
 		}
 		handler.postDelayed(
@@ -68,17 +66,17 @@ class LoadMoreActivity : AppCompatActivity() {
 		runnable?.apply { handler.removeCallbacks(this) }
 	}
 	
-	private fun getInitiationData(): MutableList<LoadMoreModel> {
-		val data = mutableListOf<LoadMoreModel>()
-		(0 until 20).forEach { data.add(LoadMoreModel(it.toString())) }
+	private fun getInitiationData(): MutableList<LoadMoreWithoutNoMoreModel> {
+		val data = mutableListOf<LoadMoreWithoutNoMoreModel>()
+		(0 until 10).forEach { data.add(LoadMoreWithoutNoMoreModel(it.toString())) }
 		return data
 	}
 	
-	private fun getUpdateData(lastSizeData: Int): MutableList<LoadMoreModel> {
-		val updateData = mutableListOf<LoadMoreModel>()
-		if (lastSizeData < 50) {
+	private fun getUpdateData(lastSizeData: Int): MutableList<LoadMoreWithoutNoMoreModel> {
+		val updateData = mutableListOf<LoadMoreWithoutNoMoreModel>()
+		if (lastSizeData < 30) {
 			(lastSizeData until lastSizeData + 10).forEach {
-				updateData.add(LoadMoreModel(it.toString()))
+				updateData.add(LoadMoreWithoutNoMoreModel(it.toString()))
 			}
 		}
 		return updateData

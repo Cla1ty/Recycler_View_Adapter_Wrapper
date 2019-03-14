@@ -15,6 +15,7 @@ import android.widget.TextView
 import com.dwiariyanto.recyclerview.adapter.BaseItemView
 import com.dwiariyanto.recyclerview.adapter.RecyclerViewHolder
 import com.dwiariyanto.recyclerview.example.R
+import com.dwiariyanto.recyclerview.example.feature.loadmorewithoutnomore.LoadMoreWithoutNoMoreModel
 import javax.inject.Inject
 
 class LoadMoreItem

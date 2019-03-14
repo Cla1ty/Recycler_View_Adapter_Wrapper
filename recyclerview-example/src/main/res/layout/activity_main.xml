@@ -30,6 +30,13 @@
 		/>
 
 	<Button
+		android:id="@+id/btnLoadMoreWithoutNoMore"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Load More Without No More"
+		/>
+
+	<Button
 		android:id="@+id/btnEmpty"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"

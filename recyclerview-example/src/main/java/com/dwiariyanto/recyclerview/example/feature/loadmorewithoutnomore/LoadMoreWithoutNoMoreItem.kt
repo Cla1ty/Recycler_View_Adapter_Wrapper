@@ -1,39 +1,32 @@
 /**************************************************************************************************
  *                                                                                                *
  *                         Created by Dwi Ariyanto (creatures99@gmail.com)                        *
- *                             Copyright © 2018. All rights reserved.                             *
+ *                             Copyright © 2019. All rights reserved.                             *
  *                                                                                                *
  *                                                                                                *
  * Create On:                                                                                     *
- * Sunday, February 18, 2018 at 21:28                                                             *
+ * Sunday, March 04, 2018 at 22:10                                                                *
  *                                                                                                *
  **************************************************************************************************/
 
-package com.dwiariyanto.recyclerview.example.feature.singleitem
+package com.dwiariyanto.recyclerview.example.feature.loadmorewithoutnomore
 
-data class SingleItemModel(
-		val number: String
+import android.widget.TextView
+import com.dwiariyanto.recyclerview.adapter.BaseItemView
+import com.dwiariyanto.recyclerview.adapter.RecyclerViewHolder
+import com.dwiariyanto.recyclerview.example.R
+import javax.inject.Inject
+
+class LoadMoreWithoutNoMoreItem
+@Inject constructor() : BaseItemView<LoadMoreWithoutNoMoreModel>(
+		LoadMoreWithoutNoMoreModel::class.java,
+		R.layout.item_textview
 ) {
 	
-	companion object {
-		val data = listOf(
-				SingleItemModel("1"),
-				SingleItemModel("2"),
-				SingleItemModel("3"),
-				SingleItemModel("4"),
-				SingleItemModel("5"),
-				SingleItemModel("6"),
-				SingleItemModel("7"),
-				SingleItemModel("8")
-		)
-		
-		val data2 = listOf(
-				SingleItemModel("1"),
-				SingleItemModel("3"),
-				SingleItemModel("5"),
-				SingleItemModel("6"),
-				SingleItemModel("8"),
-				listOf(SingleItemModel("10"))
-		)
+	override fun onBind(
+			holder: RecyclerViewHolder,
+			data: LoadMoreWithoutNoMoreModel
+	) {
+		(holder.itemView as TextView).text = data.number
 	}
 }

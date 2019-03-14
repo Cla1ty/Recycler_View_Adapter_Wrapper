@@ -43,7 +43,7 @@ class SingleItemActivity : AppCompatActivity(),
 		presenter.removeCallback()
 	}
 	
-	override fun showData(dataList: List<SingleItemModel>) {
+	override fun showData(dataList: List<Any>) {
 		adapter.data = dataList
 		recyclerView.requestLayout()
 	}

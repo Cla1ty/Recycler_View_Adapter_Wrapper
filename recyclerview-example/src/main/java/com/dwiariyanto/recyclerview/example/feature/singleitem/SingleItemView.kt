@@ -12,6 +12,6 @@
 package com.dwiariyanto.recyclerview.example.feature.singleitem
 
 interface SingleItemView {
-	fun showData(dataList: List<SingleItemModel>)
+	fun showData(dataList: List<Any>)
 	fun onItemClick(number: String)
 }
