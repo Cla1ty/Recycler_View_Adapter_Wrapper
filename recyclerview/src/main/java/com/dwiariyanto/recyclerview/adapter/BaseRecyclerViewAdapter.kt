@@ -30,7 +30,7 @@ abstract class BaseRecyclerViewAdapter(
     private var onLoadMore: ((lastSizeData: Int) -> Unit)? = null
     private var isLoadMoreExecute = false
 
-    private var isLoadMoreEnable = false
+    private val isLoadMoreEnable
         get() = numberItemBeforeLoadMore >= 0
 
     private val itemLayouts = ArrayList<BaseItemView<*>>()
@@ -114,7 +114,7 @@ abstract class BaseRecyclerViewAdapter(
     {
         val viewType = holder.itemViewType
         val itemLayout = itemLayouts[viewType]
-        itemLayout.bind?.invoke(
+        itemLayout.bind.invoke(
                 holder,
                 data!![position]
         )

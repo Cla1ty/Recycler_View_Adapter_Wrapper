@@ -18,14 +18,10 @@ abstract class BaseItemView<in DATA : Any>(
 )
 {
     internal val id: String by lazy { clazz.name }
-    internal var bind: ((holder: RecyclerViewHolder, data: Any) -> Unit)? = null
-
-    init
-    {
-        bind = { holder, data ->
-            onBind(holder, data as DATA)
-        }
-    }
+    internal var bind: ((holder: RecyclerViewHolder, data: Any) -> Unit) =
+            { holder, data ->
+                onBind(holder, data as DATA)
+            }
 
     open fun onCreate(holder: RecyclerViewHolder)
     {

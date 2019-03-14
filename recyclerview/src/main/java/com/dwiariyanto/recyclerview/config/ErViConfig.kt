@@ -15,7 +15,7 @@ import com.dwiariyanto.recyclerview.R
 
 object ErViConfig
 {
-    val configData: Config by lazy { Config() }
+    internal val configData: Config by lazy { Config() }
 
     fun config(config: Config.() -> Unit)
     {
